@@ -30,11 +30,33 @@ function writePassword() {
 // function to generate password
 function generatePassword() {
 
+  function getLength() {
+    let input_length_string = prompt('How many characters would you like your password to be?');
+
+    // convert it to a number regardless of what the user entered
+    let input_length_number = parseInt(input_length_string);
+
+    // check if within min and max length
+    console.log("User inputted length:" + input_length_number);
+    if (input_length_number >= minimum_length && input_length_number <= maximum_length) {
+      console.log("Length is within bounds.")} 
+    else {
+      console.log("Length is out of bounds.");
+      alert("Please enter a number between " + minimum_length + " and " + maximum_length + ".");
+      // rerun the function to get the length
+      getLength();
+    }
+  }
+
+
+  function getCharacterTypes() {
+    
+  }
+
+
+getLength();
+getCharacterTypes(); 
 }
-
-
-
-
 
 
 // Add event listener to generate button, triggers the writePassword function when clicked
