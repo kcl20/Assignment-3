@@ -120,20 +120,46 @@ function generatePassword() {
     // console.log("Special Characaters:" + specialTypeSelected);
   }
 
-  
-  function generateRandomPassword() {
-
+  function showConsoleLog () {
+  // print the variables to console after all prompts have been answered 
+    console.log("Lowercase: " + lowercaseSelected);
+    console.log("Uppercase: " + uppercaseSelected);
+    console.log("Numbers: " + numericTypeSelected);
+    console.log("Special characters: " + specialTypeSelected);
+    
   }
+
+  function generateRandomPassword() {
+// number keycodes from 48 (number 0) to 57 (number 9), 10 numbers
+// alphabet keycodes from 65 (A) to 90 (Z) uppercase, 26 letters
+// alaphabet keycodes from 97 (a) to 122 (z) lowercase, 26 letters
+// special characters keycodes from 33 (!) to 47 (/), 15 chars
+// 58 (:) to 64 (@), 7 chars
+// 91 ([) to 96 (`), 6 chars 
+// 123 ({) to 126 (~), 4 chars
+console.log("kenny");
+
+// for(i = 0; i < input_length_number; i++) {
+
+//   var random_number = Math.floor(Math.random() * 94) + 33;
+//   console.log(random_number);
+//   var random_character = String.fromCharCode(random_number);
+//   console.log(random_character);
+//   var password = password + random_character;
+//   console.log(password);
+//   }
+}
   
   
 
   
-  //trigger functions
+  // trigger functions
   getLength();
   getLowercase();
   getUppercase();
   getNumbericType();
   getSpecialType();
+  showConsoleLog();
   generateRandomPassword();
 
 }
