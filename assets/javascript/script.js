@@ -178,16 +178,17 @@ character_types = [];
 
 
 
-
+randomPassword = '';
 
 
 for (i=0; i < input_length_number; i++) {
   var random_number = Math.floor(Math.random() * possible_characters.length);
   console.log("Random number: " + random_number);
-  password = possible_characters.charAt(random_number);
-  console.log("Password: " + password);
+  randomPassword = randomPassword + possible_characters.charAt(random_number);
+  console.log("Password: " + randomPassword);
 }
 
+return randomPassword;
 }
   
   
@@ -202,7 +203,7 @@ for (i=0; i < input_length_number; i++) {
   showConsoleLog();
   check_minimum_character_types ();
   generateRandomPassword();
-
+  return randomPassword;
 }
 
 
