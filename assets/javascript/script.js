@@ -172,7 +172,7 @@ if (specialTypeSelected) {
 }
 
 console.log("Possible characters: " + possible_characters);
-// clear the array afterwards for next time
+// clear the array afterwards for next time otherwise it will retain for next run
 character_types = [];
 
 
@@ -188,22 +188,22 @@ for (i=0; i < input_length_number; i++) {
   console.log("Password: " + randomPassword);
 }
 
-return randomPassword;
+// return randomPassword;
 }
   
   
-
   
-  // trigger functions
-  getLength();
-  getLowercase();
-  getUppercase();
-  getNumbericType();
-  getSpecialType();
-  showConsoleLog();
-  check_minimum_character_types ();
-  generateRandomPassword();
-  return randomPassword;
+// trigger functions
+getLength();
+getLowercase();
+getUppercase();
+getNumbericType();
+getSpecialType();
+showConsoleLog();
+check_minimum_character_types ();
+generateRandomPassword();
+// return the randomPassword as output/result of GeneratePassword function to be passed to writepassword function
+return randomPassword;
 }
 
 
