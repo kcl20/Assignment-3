@@ -4,7 +4,8 @@ var minimum_length = 8
 var maximum_length = 128
 var number_of_character_types_selected = 0
 var minimum_character_types = 1
-// var character_types = ["lowercase", "uppercase", "numeric", "special"]
+
+var character_types = []
 var lowercaseSelected = false;
 var uppercaseSelected = false;
 var numericTypeSelected = false;
@@ -36,10 +37,10 @@ function writePassword() {
 function generatePassword() {
 
   function getLength() {
-    let input_length_string = prompt('How many characters would you like your password to be?');
+    input_length_string = prompt('How many characters would you like your password to be?');
 
     // convert it to a number regardless of what the user entered
-    let input_length_number = parseInt(input_length_string);
+    input_length_number = parseInt(input_length_string);
 
     // check if within min and max length
     console.log("User inputted length:" + input_length_number);
@@ -67,6 +68,7 @@ function generatePassword() {
     // set variable to true if y
     if (lowercasePrompt === 'y') {
       lowercaseSelected = true
+      character_types.push('lowercase')
     }
 
     // console.log("Lowercase:" + lowercaseSelected); 
@@ -84,6 +86,7 @@ function generatePassword() {
     // set variable to true if y
     if (uppercasePrompt === 'y') {
       uppercaseSelected = true
+      character_types.push('uppercase')
     };
     // console.log("Uppercase:" + uppercaseSelected);
   }  
@@ -100,6 +103,7 @@ function generatePassword() {
     // set variable to true if y
     if (numericTypePrompt === 'y') {
       numericTypeSelected = true
+      character_types.push('numeric')
     };
     // console.log("Numbers: " + numericTypeSelected);
   }
@@ -116,6 +120,7 @@ function generatePassword() {
     // set variable to true if y
     if (specialTypePrompt === 'y') {
       specialTypeSelected = true
+      character_types.push('special')
     };
     // console.log("Special Characaters:" + specialTypeSelected);
   }
@@ -129,6 +134,17 @@ function generatePassword() {
     
   }
 
+  function check_minimum_character_types () {
+    if (character_types.length < minimum_character_types) {
+      alert("Please select at least one character type.")
+      getLowercase();
+      getUppercase();
+      getNumbericType();
+      getSpecialType();
+      check_minimum_character_types ();
+     }
+    }
+
   function generateRandomPassword() {
 // number keycodes from 48 (number 0) to 57 (number 9), 10 numbers
 // alphabet keycodes from 65 (A) to 90 (Z) uppercase, 26 letters
@@ -137,17 +153,41 @@ function generatePassword() {
 // 58 (:) to 64 (@), 7 chars
 // 91 ([) to 96 (`), 6 chars 
 // 123 ({) to 126 (~), 4 chars
-console.log("kenny");
 
-// for(i = 0; i < input_length_number; i++) {
+  console.log("Character types selected: " + character_types);
+  console.log(character_types.length);
 
-//   var random_number = Math.floor(Math.random() * 94) + 33;
-//   console.log(random_number);
-//   var random_character = String.fromCharCode(random_number);
-//   console.log(random_character);
-//   var password = password + random_character;
-//   console.log(password);
-//   }
+var possible_characters = ""
+if (lowercaseSelected) {
+  possible_characters += "abcdefghijklmnopqrstuvwxyz"
+}
+if (uppercaseSelected) {
+  possible_characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+}
+if (numericTypeSelected) {
+  possible_characters += "0123456789"
+}
+if (specialTypeSelected) {
+  possible_characters += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+}
+
+console.log("Possible characters: " + possible_characters);
+// clear the array afterwards for next time
+character_types = [];
+
+
+
+
+
+
+
+for (i=0; i < input_length_number; i++) {
+  var random_number = Math.floor(Math.random() * possible_characters.length);
+  console.log("Random number: " + random_number);
+  password = possible_characters.charAt(random_number);
+  console.log("Password: " + password);
+}
+
 }
   
   
@@ -160,6 +200,7 @@ console.log("kenny");
   getNumbericType();
   getSpecialType();
   showConsoleLog();
+  check_minimum_character_types ();
   generateRandomPassword();
 
 }
